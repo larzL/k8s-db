@@ -1,0 +1,13 @@
+#Service allow application within the cluster connect to the DB externally
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-mysql
+  labels:
+    app: db
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: db

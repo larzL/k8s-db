@@ -1,0 +1,14 @@
+#Service allow access to application from outside
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-app
+  labels:
+    app: wp
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: wp
+  type: LoadBalancer

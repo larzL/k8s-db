@@ -1,0 +1,13 @@
+#Use secret generator to create MySQL password
+secretGenerator:
+- name: mysql-pass
+  literals:
+  - password=PickSecurePassword
+resources:
+- db-service.yaml
+- db-pv.yaml
+- db-deploy.yaml
+- app-service.yaml
+- app-configmap.yaml
+- app-deploy.yaml
+- app-hpa.yaml

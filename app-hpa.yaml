@@ -1,0 +1,14 @@
+#HPA autoscale base on CPU usage
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: k8s-app
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: k8s-app
+  minReplicas: 2
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 70

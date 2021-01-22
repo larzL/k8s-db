@@ -1,0 +1,10 @@
+#Use configmap to manage env var
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k8s-app-configmap 
+data:
+  app_db_host: k8s-mysql 
+  app_db_user: user
+  app_db_password: PickSecurePassword
