@@ -45,9 +45,9 @@ To test persistent storage on the db, simply create any oject on the DB, run `ku
 * Needs to be able to autoscale based on cpu usage.
   * HPA has been configured for autoscale base on CPU usage. You can run `kubectl describe hpa` to verify.
 * Have a way to restart the application pods in a seamless way without causing downtime.
-  * I set deplyment to recreate when deletion occured. Replicaset also been configured to ensure 0 downtime. In addional, you can also use the `rollout` when restarting the pod(s).
+  * I set deplyment to recreate when deletion occured. Replicaset also been configured to ensure 0 downtime. In addional, you can also use the `rollout` option when restarting the pod(s).
 * Have a way to access the application from outside the cluster. No need to manage certificates for this.
-  * App service is configured to be accessible from outside. I verified locally when running on minikube.
+  * App service is configured to be accessible from outside. I verified locally while running on minikube.
 
 ## Authors
 
