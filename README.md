@@ -23,21 +23,21 @@ kubectl apply -k ./
 
 ## Test the APP and DB
 
-Use `kubectl get pod` to make sure all pods are runniing. You can also check `hpa`, configmap`, `sevice`, etc as well. Once confirmed things are running properly, you can access the app to verify. A wordpress image is installed for testing purpose. If you're using minikube, run below command to get the app URL. 
+Use `kubectl get pod` to make sure all pods are runniing. You can also check `hpa`, `configmap`, `sevice`, etc as well. Once confirmed things are running properly, you can access the app to verify. A wordpress image is installed for testing purpose. If you're using minikube, run below command to get the app URL. 
 
 ```
 minikube service k8s-app
 ```
 
-To test the connection from app to db, you can use `root` and the password created by secret generator to access the DB. As for the db endpoint, you can get it by running `kubectl get service`.
+To test the connection from app to db, you can use `root` and the password created by secret generator to access the DB. As for the db endpoint, you can get it by running `kubectl get service`. Please note you have to use `root` db user. My understanding is we have to use other tool like Ansible to manage DB users, etc. I would like to discuss with the team on how to manage the DB. 
 
-To test persistent storage on the db, simply create any oject on the DB, then `kubectl delete pod "DB_pod" to recreate the db. Then login to the db again to make sure the oject still exist.
+To test persistent storage on the db, simply create any oject on the DB, run `kubectl delete pod "DB_pod"` to recreate the db, then login to the db to make sure the oject still exist.
 
 
 ## Notes
 
 * Have a persistent storage. In the case a database pod would to restart the database needs to keep all the data.
-  * A persistent volume has been created and mounted on the DB. I already verified reboot the DB won't lose any data.
+  * A persistent volume has been created and mounted on the DB. I already verified and confirmed rebooted DB won't lose any data.
 * Have a way for an external application in the cluster to talk to this database.
   * DB service is configured to be accessible by other service from the same cluster.
 * Accept environment variables that contain database hostname, user to use, and a password. Pick a better way to inject those to your application container.
